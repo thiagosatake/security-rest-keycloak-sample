@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.3.0'
-	id 'io.spring.dependency-management' version '1.1.5'
+	id 'org.springframework.boot' version '3.3.1'
+	id "io.spring.dependency-management" version "1.1.5"
 }
 
 group = 'com.example'
@@ -14,31 +14,21 @@ java {
 }
 
 repositories {
+    mavenLocal()
 	mavenCentral()
 }
 
 dependencies {
-
-	implementation 'org.keycloak:keycloak-core:25.0.0'
-	implementation 'org.keycloak:keycloak-policy-enforcer:25.0.0'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation platform('arqref.one:arqref-bom:1.0.0-SNAPSHOT')
 	
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'arqref.one:arqref-one-web'
 	
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'	
 	compileOnly 'org.projectlombok:lombok'
   	annotationProcessor 'org.projectlombok:lombok'
-
-  	testImplementation 'org.keycloak:keycloak-test-helper:25.0.0'
-  	testImplementation 'org.keycloak:keycloak-admin-client:25.0.0'
-  	testImplementation 'org.springframework.security:spring-security-test' 
-		
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation 'arqref.one:arqref-one-test'	
+	
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 configurations {

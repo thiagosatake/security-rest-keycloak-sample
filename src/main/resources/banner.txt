@@ -1,0 +1,12 @@
+ -------------------------------------
+< You are number 6! Who is number one? >
+ --------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+                
+       ${spring.application.name}     
+       ${Ansi.GREEN}:: Spring Boot: (v${spring-boot.version}) :: ${Ansi.DEFAULT} 
+       ${Ansi.GREEN}:: OpenJDK (v${java.version}) :: ${Ansi.DEFAULT}
