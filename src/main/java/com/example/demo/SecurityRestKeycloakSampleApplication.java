@@ -2,11 +2,10 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 
-import arqref.one.web.ArqRefOneWebConfiguration;
+import arqref.one.web.EnableArqRefOneWebSecurity;
 
-@Import(ArqRefOneWebConfiguration.class)
+@EnableArqRefOneWebSecurity
 @SpringBootApplication
 public class SecurityRestKeycloakSampleApplication {
 
