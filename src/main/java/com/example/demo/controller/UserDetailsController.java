@@ -23,19 +23,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.UserDetailResponse;
-import com.example.demo.model.UserDetails;
+import com.example.demo.model.AppUserDetails;
+
 
 @RestController
 @RequestMapping(path = "/user")
 public class UserDetailsController {
 
+    
     @GetMapping("/profile")
     public ResponseEntity<UserDetailResponse> profile(@AuthenticationPrincipal Jwt jwt) {
         UserDetailResponse response = new UserDetailResponse();
+
+        AppUserDetails myUserDetailsResponse = new AppUserDetails();
+        myUserDetailsResponse.setId(jwt.getId());        
+        myUserDetailsResponse.setName(jwt.getClaimAsString("name"));
+        myUserDetailsResponse.setGivenName(jwt.getClaimAsString("given_name"));
+        myUserDetailsResponse.setFamilyName(jwt.getClaimAsString("family_name"));
+        myUserDetailsResponse.setPreferredName(jwt.getClaimAsString("preferred_username"));
+        myUserDetailsResponse.setEmail(jwt.getClaimAsString("email"));
         
-        UserDetails userDetails = new UserDetails();
-        userDetails.setName(jwt.getClaimAsString("preferred_username"));
-        response.setUserDetails(userDetails);
+        response.setProfile(myUserDetailsResponse);
 
         return ResponseEntity.ok(response);
     }

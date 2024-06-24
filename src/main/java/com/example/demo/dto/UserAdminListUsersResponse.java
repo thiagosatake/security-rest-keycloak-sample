@@ -2,7 +2,7 @@ package com.example.demo.dto;
 
 import java.util.List;
 
-import com.example.demo.model.UserDetails;
+import com.example.demo.model.AppUserDetails;
 
 import lombok.Data;
 
@@ -10,6 +10,6 @@ import lombok.Data;
 public class UserAdminListUsersResponse {
     
     private String requestBy;
-    private List<UserDetails> userDetailsList;
+    private List<AppUserDetails> userDetailsList;
 
 }
