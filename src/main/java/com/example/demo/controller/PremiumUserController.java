@@ -19,22 +19,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dto.UserDetailResponse;
-import com.example.demo.model.UserDetails;
+import com.example.demo.dto.UserPremiumListGiftsResponse;
 
 @RestController
-public class UserDetailController {
+@RequestMapping(path = "/premium")
+public class PremiumUserController {
 
-    @GetMapping("/who-i-am")
-    public ResponseEntity<UserDetailResponse> index(@AuthenticationPrincipal Jwt jwt) {
-        UserDetailResponse response = new UserDetailResponse();
-        
-        UserDetails userDetails = new UserDetails();
-        userDetails.setName(jwt.getClaimAsString("preferred_username"));
-        response.setUserDetails(userDetails);
-
+    @GetMapping("/gifts")
+    public ResponseEntity<UserPremiumListGiftsResponse> users(@AuthenticationPrincipal Jwt jwt) {
+        UserPremiumListGiftsResponse response = new UserPremiumListGiftsResponse();
+        response.setRequestBy(jwt.getClaimAsString("preferred_username"));
         return ResponseEntity.ok(response);
     }
 

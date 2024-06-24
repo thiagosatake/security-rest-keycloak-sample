@@ -15,21 +15,24 @@
  */
 package com.example.demo.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.UserAdminListUsersResponse;
+
 @RestController
-public class OAuth2ResourceServerController {
+@RequestMapping(path = "/admin")
+public class AdminUserController {
 
-	@GetMapping("/")
-	public String index(@AuthenticationPrincipal Jwt jwt) {
-		return String.format("Hello, %s!", jwt.getClaimAsString("preferred_username"));
-	}
+    @GetMapping("/users")
+    public ResponseEntity<UserAdminListUsersResponse> users(@AuthenticationPrincipal Jwt jwt) {
+        UserAdminListUsersResponse response = new UserAdminListUsersResponse();
+        response.setRequestBy(jwt.getClaimAsString("preferred_username"));
+        return ResponseEntity.ok(response);
+    }
 
-	@GetMapping("/protected/premium")
-	public String premium(@AuthenticationPrincipal Jwt jwt) {
-		return String.format("Hello, %s!", jwt.getClaimAsString("preferred_username"));
-	}
 }
