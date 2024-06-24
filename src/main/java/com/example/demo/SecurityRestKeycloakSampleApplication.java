@@ -3,7 +3,7 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import arqref.one.web.EnableArqRefOneWebSecurity;
+import arqref.one.web.security.EnableArqRefOneWebSecurity;
 
 @EnableArqRefOneWebSecurity
 @SpringBootApplication

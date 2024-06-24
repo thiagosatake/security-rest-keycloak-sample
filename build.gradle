@@ -21,7 +21,7 @@ repositories {
 dependencies {
 	implementation platform('arqref.one:arqref-bom:1.0.0-SNAPSHOT')
 	
-	implementation 'arqref.one:arqref-one-web'
+	implementation 'arqref.one:arqref-one-web-security'
 	
 	compileOnly 'org.projectlombok:lombok'
   	annotationProcessor 'org.projectlombok:lombok'
